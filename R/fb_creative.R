@@ -78,7 +78,8 @@ fbad_read_creative <- function(
         'actor_id', 'call_to_action_type', 'follow_redirect',
         'image_crops', 'image_file', 'image_hash', 'image_url', 'thumbnail_url',
         'link_url', 'url_tags',
-        'object_id', 'object_story_id', 'object_story_spec', 'object_type', 'object_url')) {
+        'object_id', 'object_story_id', 'object_story_spec', 'object_type', 'object_url'),
+  params) {
 
     fbacc <- fbad_check_fbacc()
 
@@ -102,7 +103,8 @@ fbad_read_creative <- function(
             'creative' = paste0(id, '?fields=', fields),
             'account'  = paste0('act_', id, '/adcreatives?fields=', fields),
             'ad'       = paste0(id, '/adcreatives?fields=', fields)),
-        method = "GET")
+        method = "GET",
+        params=params)
 
     ## return
     fromJSONish(res)
